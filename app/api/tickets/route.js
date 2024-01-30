@@ -5,9 +5,7 @@ export async function POST(req) {
 
     try {
         const body = await req.json()
-        console.log(">>>> 🚀 ~ POST ~ body:", body)
         const newTicket = await Ticket.create(body)
-        console.log("🚀 ~ POST ~ newTicket:", newTicket)
 
         return NextResponse.json(
             { status: 201 },

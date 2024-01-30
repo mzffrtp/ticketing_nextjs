@@ -66,13 +66,13 @@ export default function TicketForm() {
                 <div className="text-center space-x-3">
 
                     <input type="radio" name="priority" value={1} id="High" />
-                    <label htmlFor="High">High</label>
+                    <label htmlFor="High">Low</label>
 
-                    <input type="radio" name="priority" value={1} id="Normal" />
+                    <input type="radio" name="priority" value={2} id="Normal" />
                     <label htmlFor="Normal">Normal</label>
 
-                    <input type="radio" name="priority" value={1} id="Low" />
-                    <label htmlFor="Low">Low</label>
+                    <input type="radio" name="priority" value={3} id="Low" />
+                    <label htmlFor="Low">High</label>
                 </div>
 
 
