@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 
 export default function DeleteBlock({ ticketId }) {
-    console.log("🚀 ~ DeleteBlock ~ id:", ticketId)
     const router = useRouter()
     const handleDelete = async () => {
         const deleteRes = await fetch(`http://localhost:3001/api/tickets/${ticketId}`,

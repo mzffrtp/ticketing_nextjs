@@ -11,7 +11,6 @@ export default function TicketCard({ ticket }) {
                 <PriorityBlock priority={ticket.priority} />
                 <DeleteBlock ticketId={ticket._id} />
             </div>
-            {console.log("🚀 ~ TicketCard ~ ticket._id:", ticket._id)}
             <Link href={`/ticket-page/${ticket._id}`} style={{ display: "contents" }}>
                 <h4>{ticket.title}</h4>
                 <hr className="h-px border-0 bg-page mb-2"></hr>

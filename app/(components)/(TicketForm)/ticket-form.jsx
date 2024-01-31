@@ -2,8 +2,10 @@
 import { useRouter } from "next/navigation";
 import "./ticket-form.css"
 import { SwalToast } from "@/app/_utis/swal-toast";
+import { useEffect, useState } from "react";
 
-export default function TicketForm() {
+export default function TicketForm({ updatedTicket }) {
+    console.log("🚀 ~ TicketForm ~ updatedTicket:", updatedTicket)
     const router = useRouter()
 
     async function onFormSubmit(e) {
@@ -41,7 +43,9 @@ export default function TicketForm() {
         <div className="flex justify-center items-center">
             <form className="flex flex-col w-3/4 md:w-1/2 my-2"
                 onSubmit={onFormSubmit}>
-                <h3 className="text-center">Create Ticket</h3>
+                <h3 className="text-center">{
+                    updatedTicket ? "Update Ticket" : "Create Ticket"
+                }</h3>
 
                 <label className="text-center">Title</label>
                 <hr className="hr-styled"></hr>
@@ -90,7 +94,7 @@ export default function TicketForm() {
                     <option>Resolved</option>
                 </select>
                 <div className="flex justify-center">
-                    <button className="btn w-2/3 md:w-1/3 my-2" type="submit">Submit Ticket</button>
+                    <button className="btn w-2/3 md:w-1/3 my-2" type="submit">{updatedTicket ? "Update Ticket" : "Create Ticket"}</button>
                 </div>
 
             </form>

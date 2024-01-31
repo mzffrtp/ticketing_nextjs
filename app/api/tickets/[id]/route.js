@@ -14,29 +14,17 @@ export async function DELETE(req, { params }) {
             { status: 500 },
             { message: "Error occured during deleting ticket}", e })
     }
-}
+};
 
-{
-    /*
-    
-    export async function GET(req, { params }) {
-    console.log("🚀 ~ GET ~ params:", params)
-
-
+export async function GET(req, { params }) {
     try {
-        const ticket = await Ticket.findById(params.id)
-        console.log("🚀 ~ GET ~ ticket:", ticket)
+        const ticket = await Ticket.findById(params.id);
 
+        return NextResponse.json({ ticket }, { status: 200 });
+    } catch (err) {
         return NextResponse.json(
-            { status: 200 },
-            { message: "Ticket fetched succesfully!" },
-            { data: ticket }
-        )
-    } catch (e) {
-        return NextResponse.json(
-            { status: 500 },
-            { message: "Error occured fetching ticket}", e })
+            { message: 'Error occured during ticket fetching', err },
+            { status: 500 }
+        );
     }
-}
-*/
 }
