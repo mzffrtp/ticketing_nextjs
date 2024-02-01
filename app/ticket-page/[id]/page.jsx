@@ -24,7 +24,6 @@ export default async function TicketPage({ params }) {
         const res = await getTicketById(params.id)
 
         updatedTicket = res.ticket
-        console.log("🚀 ~ TicketPage ~ updatedTicket:", updatedTicket)
     }
 
 

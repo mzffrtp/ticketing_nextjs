@@ -35,4 +35,23 @@ export async function GET(req) {
             e
         })
     }
+};
+
+export async function PATCH(req, { params }) {
+    try {
+        console.log("<<<<<<<<here>>>>>>>>>");
+        const body = await req.json()
+        console.log("🚀 ~ PUT ~ body:", body)
+
+        return NextResponse.json(
+            { message: "Ticket updated!" },
+            { status: 200 }
+        )
+
+    } catch (e) {
+        return NextResponse.json(
+            { message: "Error occured during updating", err },
+            { status: 500 }
+        )
+    }
 }

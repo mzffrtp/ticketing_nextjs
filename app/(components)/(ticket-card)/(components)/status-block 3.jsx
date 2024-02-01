@@ -1,7 +1,8 @@
 export default function StatusBlock({ status }) {
+    console.log(status.toLowerCase());
     const getColor = () => {
         let color = "#EF4444"
-        switch (status.toLowerCase()) {
+        switch (status) {
             case "in progress":
                 return (color = "#1e40af");
             case "mitigated":
@@ -13,8 +14,10 @@ export default function StatusBlock({ status }) {
         }
     }
     return (
-        <span
-            style={{ background: getColor() }}
-            className="inline-block rounded-full p-2 font-semibold text-gray-700 text-xs">{status}</span>
+        <div>
+            <span
+                style={{ background: getColor() }}
+                className="inline-block rounded-full p-2 font-semibold text-gray-700 text-xs">{status}</span>
+        </div>
     )
 }
