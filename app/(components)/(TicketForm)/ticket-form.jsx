@@ -30,41 +30,37 @@ export default function TicketForm({ updatedTicket }) {
     async function onFormSubmit(e) {
         e.preventDefault();
 
-        const formElement = e.target;
-        const formData = new FormData(formElement);
-        const formDataObject = Object.fromEntries(formData.entries());
-        console.log("🚀 ~ onFormSubmit ~ formDataObject:", formDataObject)
-
         if (updatedTicket) {
-            const res = await fetch(`/api/tickets/${updatedTicket._id}`,)
-
-            console.log("🚀 ~ onFormSubmit ~ res:", res)
-            {/*
-        const res = await fetch(`/api/tickets/${updatedTicket._id}`, {
-                method: 'POST',
-                body: JSON.stringify(formDataObject),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            const res = await fetch(`/api/tickets/${updatedTicket._id}`, {
+                method: "PUT",
+                body: JSON.stringify({ ticketData }),
+                'content-type': 'application/json',
             });
+            console.log("🚀 ~ onFormSubmit ~ res:", res);
 
             if (!res.ok) {
-                throw new Error('An error occurred while updating the ticket: ' + res.statusText);
-            } */}
+                throw new Error('An error occurred while updating the ticket');
+            }
+
+            Swal.fire({
+                icon: "success",
+                title: "Ticket updated succesfully"
+            })
         } else {
             const res = await fetch('/api/tickets', {
                 method: 'POST',
-                body: JSON.stringify(formDataObject),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                body: JSON.stringify({ ticketData }),
+                'content-type': 'application/json',
             });
 
             if (!res.ok) {
-                throw new Error('Ticket oluştururken hata meydana geldi');
+                throw new Error('An error occurred while creating the ticket:');
             }
         }
-
+        Swal.fire({
+            icon: "success",
+            title: "Ticket created succesfully"
+        })
         router.push('/');
         router.refresh();
     };

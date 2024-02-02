@@ -37,15 +37,19 @@ export async function GET(req) {
     }
 };
 
-export async function PATCH(req, { params }) {
+export async function PUT(req, { params }) {
     try {
         console.log("<<<<<<<<here>>>>>>>>>");
         const body = await req.json()
         console.log("🚀 ~ PUT ~ body:", body)
+        const updatedTicket = await Ticket.findByIdAndUpdate(params.id, {
+            ...body.ticketData
+        })
 
         return NextResponse.json(
             { message: "Ticket updated!" },
-            { status: 200 }
+            { status: 200 },
+            { updatedTicket }
         )
 
     } catch (e) {
